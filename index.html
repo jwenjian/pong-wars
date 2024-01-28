@@ -167,6 +167,7 @@
         if (i >= 0 && i < numSquaresX && j >= 0 && j < numSquaresY) {
           if (squares[i][j] !== color) {
             squares[i][j] = color;
+            nightSound.play()
 
             // Determine bounce direction based on the angle
             if (Math.abs(Math.cos(angle)) > Math.abs(Math.sin(angle))) {
@@ -203,14 +204,14 @@
 
     function checkBoundaryCollision(x, y, dx, dy, howlerSound) {
       if (x + dx > canvas.width - SQUARE_SIZE / 2 || x + dx < SQUARE_SIZE / 2) {
-        howlerSound.play();
+        //howlerSound.play();
         dx = -dx;
       }
       if (
         y + dy > canvas.height - SQUARE_SIZE / 2 ||
         y + dy < SQUARE_SIZE / 2
       ) {
-        howlerSound.play();
+        //howlerSound.play();
         dy = -dy;
       }
 
