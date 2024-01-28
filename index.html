@@ -107,6 +107,10 @@
       src: ['https://cdn2.ear0.com:3321/preview?soundid=17936&type=mp3']
     })
 
+    document.addEventListener('click', e => {
+      nightSound.play();
+    })
+
     let squares = [];
 
     for (let i = 0; i < numSquaresX; i++) {
