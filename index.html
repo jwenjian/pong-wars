@@ -69,6 +69,8 @@
     </div>
   </body>
 
+  <script src="https://www.jsdelivr.com/projects/howler.js"></script>
+
   <script>
     // Source palette: https://twitter.com/AlexCristache/status/1738610343499157872
     const colorPalette = {
@@ -96,6 +98,10 @@
 
     const numSquaresX = canvas.width / SQUARE_SIZE;
     const numSquaresY = canvas.height / SQUARE_SIZE;
+
+    const daySound = new Howl({
+      src: ['https://cdn.freesound.org/previews/371/371278_1196472-lq.mp3']
+    });
 
     let squares = [];
 
@@ -193,12 +199,14 @@
 
     function checkBoundaryCollision(x, y, dx, dy) {
       if (x + dx > canvas.width - SQUARE_SIZE / 2 || x + dx < SQUARE_SIZE / 2) {
+        daySound.play();
         dx = -dx;
       }
       if (
         y + dy > canvas.height - SQUARE_SIZE / 2 ||
         y + dy < SQUARE_SIZE / 2
       ) {
+        daySound.play();
         dy = -dy;
       }
 
@@ -239,4 +247,5 @@
 
     requestAnimationFrame(draw);
   </script>
+
 </html>
