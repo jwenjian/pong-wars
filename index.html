@@ -103,6 +103,10 @@
       src: ['https://cdn.freesound.org/previews/371/371278_1196472-lq.mp3']
     });
 
+    const nightSound = new Howl({
+      src: ['https://cdn2.ear0.com:3321/preview?soundid=17936&type=mp3']
+    })
+
     let squares = [];
 
     for (let i = 0; i < numSquaresX; i++) {
@@ -197,16 +201,16 @@
       scoreElement.textContent = `day ${dayScore} | night ${nightScore}`;
     }
 
-    function checkBoundaryCollision(x, y, dx, dy) {
+    function checkBoundaryCollision(x, y, dx, dy, howlerSound) {
       if (x + dx > canvas.width - SQUARE_SIZE / 2 || x + dx < SQUARE_SIZE / 2) {
-        daySound.play();
+        howlerSound.play();
         dx = -dx;
       }
       if (
         y + dy > canvas.height - SQUARE_SIZE / 2 ||
         y + dy < SQUARE_SIZE / 2
       ) {
-        daySound.play();
+        howlerSound.play();
         dy = -dy;
       }
 
@@ -229,11 +233,11 @@
 
       updateScoreElement();
 
-      let boundary1 = checkBoundaryCollision(x1, y1, dx1, dy1);
+      let boundary1 = checkBoundaryCollision(x1, y1, dx1, dy1, daySound);
       dx1 = boundary1.dx;
       dy1 = boundary1.dy;
 
-      let boundary2 = checkBoundaryCollision(x2, y2, dx2, dy2);
+      let boundary2 = checkBoundaryCollision(x2, y2, dx2, dy2, nightSound);
       dx2 = boundary2.dx;
       dy2 = boundary2.dy;
 
