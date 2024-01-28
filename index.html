@@ -99,9 +99,9 @@
     const numSquaresX = canvas.width / SQUARE_SIZE;
     const numSquaresY = canvas.height / SQUARE_SIZE;
 
-    const daySound = new Howl({
-      src: ['https://cdn.freesound.org/previews/371/371278_1196472-lq.mp3']
-    });
+    // const daySound = new Howl({
+    //   src: ['https://cdn.freesound.org/previews/371/371278_1196472-lq.mp3']
+    // });
 
     const nightSound = new Howl({
       src: ['https://cdn2.ear0.com:3321/preview?soundid=17936&type=mp3']
@@ -204,14 +204,14 @@
 
     function checkBoundaryCollision(x, y, dx, dy, howlerSound) {
       if (x + dx > canvas.width - SQUARE_SIZE / 2 || x + dx < SQUARE_SIZE / 2) {
-        //howlerSound.play();
+        howlerSound.play();
         dx = -dx;
       }
       if (
         y + dy > canvas.height - SQUARE_SIZE / 2 ||
         y + dy < SQUARE_SIZE / 2
       ) {
-        //howlerSound.play();
+        howlerSound.play();
         dy = -dy;
       }
 
